@@ -1,3 +1,6 @@
+
+#ifndef _CONTROLE_H_
+#define _CONTROLE_H_
 #include "empresa.h"
 
 class controle_empresas{
@@ -6,3 +9,5 @@ class controle_empresas{
 
 
 };
+
+#endif

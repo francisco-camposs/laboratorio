@@ -1,12 +1,18 @@
-#include "funcionario.h"
+#ifndef _EMPRESA_H_
+#define _EMPRESA_H_
 #include <iostream>
 #include <vector>
+#include "date.h"
+#include "funcionario.h"
 
 class empresa {
 	private:
 		string nome;
 		string CNPJ;
-		vector<funcionario> funcionarios;
+		vector <funcionario *> funcionarios;
+
+	public:
+			static date data_atual;
 
 	public:
 		//Métodos set, para inserção de dados
@@ -21,7 +27,9 @@ class empresa {
 		métodos de manipulação de Funcionarios
 		************************************/
 		//Aumenta o salario de todos os funcionarios
-		void alterar_salario(float alteracao);
+		void aumentar_salario_todos_funcionarios(float alteracao);
+
+		void add_funcionario(string nome, float salario, string cpf, int dia_de_admissao, int mes_de_admissao, int ano_de_admissao);
 
 		//Listar todos osfuncionarios
 		void listar_func();
@@ -31,3 +39,5 @@ class empresa {
 
 
 };
+
+#endif

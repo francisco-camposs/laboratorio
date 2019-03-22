@@ -14,7 +14,7 @@
 
 		public:
 			date();
-			date (const int &d, const int& m, const int& y);
+			date(const int &d, const int& m, const int& y);
 
 			bool valid(void) const;
 			int day() const;
