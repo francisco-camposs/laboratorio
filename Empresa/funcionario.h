@@ -1,4 +1,5 @@
 #include <iostream>
+#include "date.h"
 
 using namespace std;
 
@@ -6,7 +7,7 @@ class funcionario{
 	private:
 		string nome;
 		float salario;
-		// date data_de_admissao;
+		date data_de_admissao;
 
 	public:
 	funcionario();
@@ -15,12 +16,12 @@ class funcionario{
 	//Métodos set, para inserção de dados
 	void set_Nome(string nome_func);
 	void set_Salario(float salario_func);
-	// void set_data_de_admissao(date data);
+	void set_data_de_admissao(int dia, int mes, int ano);
 
 	// Métodos get, para retorno de dados
 	string get_Nome();
 	float get_Salario();
-	// date get_data_de_admissao();
+	date get_data_de_admissao();
 
 	//Alterar salario, o valor da alteracao é porcentagem
 	void alterar_salario(float alteracao);
@@ -28,5 +29,4 @@ class funcionario{
 	//Sobrecarga de operadores
 		//
 		//
-
 };

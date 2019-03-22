@@ -21,7 +21,7 @@
 	************************************/
 	//Aumenta o salario de todos os funcionarios
 	void empresa::alterar_salario(float alteracao){
-
+		
 	};
 
 	//Listar todos osfuncionarios

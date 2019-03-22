@@ -1,52 +1,49 @@
 //  file:  date.h
 //  author:  Bernt  A  Oedegaard.
-
 #ifndef _DATE_H_
 #define _DATE_H_
+	#include<iostream>
 
-#include<iostream>
+	using namespace std;
 
-// #ifndef _DATE_H_
-// #define _DATE_H_
+	class date {
+		protected:
+			int year_;
+			int month_;
+			int day_;
 
-// #include<iostream>
+		public:
+			date();
+			date (const int &d, const int& m, const int& y);
 
-// using namespace std;
+			bool valid(void) const;
+			int day() const;
+			int month() const;
+			int year() const;
 
-// class date {
-// 	protected:
-// 		int year_;
-// 		int month_;
-// 		int day_;
+			void set_day (const int& day);
+			void set_month (const int& month);
+			void set_year (const int& year);
 
-// 	public:
-// 		public:
-// 			date ();
-// 			date (const int& d,const int& m,const int& y);
+			int transform_in_days();
 
-// 			boolvalid (void) const;
+			date operator++();
+			date operator++(int);
 
-// 			int day() const;
-// 			int month() const;
-// 			int year() const;
+			date operator--();
+			date operator--(int);
+			int operator- (date data_two);
 
-// 			void set_day (const int& day_);
-// 			void set_month (const int& month_);
-// 			void set_year(const int& year_);
+	};
 
-// 			date operator ++(); //  prefix
-// 			date operator ++ (int); // prefix
+		bool operator== (const date&, const date&);
+		bool operator!= (const date&, const date&);
+		bool operator< (const date&, const date&);
+		bool operator> (const date&, const date&);
+		bool operator<= (const date&, const date&);
+		bool operator>= (const date&, const date&);
 
-// 			date operator−−();//  prefix
-// 			date operator−− (int);//  postfix
-// }
 
-// bool operator == (const date&,const date&); // Comparison  operators
-// bool operator != (const date&,const date&);
-// bool operator < (const date&,const date&);
-// bool operator > (const date&,const date&);
-// bool operator <= (const date&,const date&);
-// bool operator >= (const date&,const date&);
-// ostream& operator << (ostream& os,const date& d);//  output  operator
+		ostream& operator << (ostream& os, const date& d);
 
 #endif

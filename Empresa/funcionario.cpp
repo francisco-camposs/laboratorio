@@ -14,8 +14,11 @@
 		salario = salario_func;
 	};
 
-	// void funcionario::set_data_de_admissao(date data){
-	//};
+	void funcionario::set_data_de_admissao(int dia, int mes, int ano){
+		data_de_admissao.set_day(dia);
+		data_de_admissao.set_month(mes);
+		data_de_admissao.set_year(ano);
+	};
 
 
 	// Métodos get, para retorno de dados
@@ -27,10 +30,8 @@
 		return salario;
 	};
 
-	// date funcionario::get_data_de_admissao(){
-		//return ;
-	//};
+	date funcionario::get_data_de_admissao(){
+	};
 
 	void alterar_salario(float alteracao){
-		
 	}

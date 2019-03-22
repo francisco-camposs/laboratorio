@@ -1,6 +1,6 @@
+#include "funcionario.h"
 #include <iostream>
 #include <vector>
-#include "funcionario.h"
 
 class empresa {
 	private:
@@ -31,5 +31,3 @@ class empresa {
 
 
 };
-
-
