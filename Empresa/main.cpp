@@ -1,37 +1,29 @@
 #include <iostream>
-#include "empresa.h"
+#include "controle.h"
 
 using namespace std;
 
 date empresa::data_atual(21,3,2019);
 
-
-// void aumentar_salario_todos_funcionarios(float alteracao);
-// void add_funcionario(string nome, float salario, string cpf, int dia_de_admissao, int mes_de_admissao, int ano_de_admissao);
-// void listar_func();
-// void listar_func_periodo_exp();
-
 int main (){
-	empresa JBC;
-	JBC.set_nome("JBC Industries LTDA");
-	cout << "laranja1"<< endl;
-	JBC.set_CNPJ("34853478563475600");
-	cout << "laranja2"<< endl;
-	JBC.add_funcionario("Salnorabo", 200.00, "1234567890", 12, 3, 2012);
-	cout << "laranja3"<< endl;
-	JBC.add_funcionario("Bozossauro", 2000.00, "1234567898", 11, 3, 2019);
-	cout << "laranja4"<< endl;
-	JBC.add_funcionario("Bozonaro", 201.00, "1234567894", 15, 2, 2019);
-	cout << "laranja5"<< endl;
-	JBC.add_funcionario("Bolsonazi", 250.00, "1234567893", 12, 3, 2017);
-	cout << "laranja6"<< endl;
-	JBC.add_funcionario("Bolsotario", 3200.00, "1234567899", 01, 4, 2014);
-	cout << "laranja7"<< endl;
-	JBC.add_funcionario("bostanaro", 50200.00, "1234567891", 30, 12, 2000);
-	cout << "laranja8"<< endl;
-	JBC.add_funcionario("bozozilla", 34200.00, "1234567899", 12, 6, 2011);
-	cout << "laranja10"<< endl;
-	JBC.listar_func();
-	cout << "laranja11"<< endl;
+	controle_empresas empresas;
+	empresas.add_Empresa("JBC Industries", "34853478563475600");
+	empresas.add_funcionarios("34853478563475600", "Bozossauro", 2000.99, "1234567898", 11, 3, 2019);
+	empresas.add_funcionarios("34853478563475600", "Salnorabo", 200.00, "1234567890", 12, 3, 2012);
+	empresas.add_funcionarios("34853478563475600", "Bolsonazi", 250.00, "1234567893", 12, 3, 2017);
+	empresas.add_funcionarios("34853478563475600", "Bolsotario", 3200.00, "1234567899", 01, 4, 2014);
+	empresas.listar_funcionarios_empresa("34853478563475600");
+	empresas.listar_funcionarios_em_experiencia("34853478563475600");
+	empresas.alterar_salario_funcionario("34853478563475600", 100);
+	empresas.listar_funcionarios_empresa("34853478563475600");
+	// empresas.add_Empresa("Lan House and Bagulhos Sinistros", "12345678900");
+	// empresas.add_funcionarios( "12345678900", "Dragão Azul", 1000000, "987654234", 3, 4, 2004);
+	// empresas.add_funcionarios( "12345678900", "Dragão Vermelho", 1000000, "987654235", 27, 9, 2018);
+	// empresas.add_funcionarios( "12345678900", "Dragão Verde", 1000000, "987654236", 8, 4, 1999);
+	// empresas.add_funcionarios( "12345678900", "Dragão Negro", 1000000, "987654237", 31, 1, 2019);
+	// empresas.add_funcionarios( "12345678900", "Dragão Branco", 1000000, "987654239", 30, 1, 2019);
+	// empresas.listar_funcionarios_empresa("12345678900");
+	// empresas.listar_funcionarios_em_experiencia("12345678900");
+	empresas.listar_empresas();
 	return 0;
 }

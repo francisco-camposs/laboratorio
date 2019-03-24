@@ -9,7 +9,7 @@ class empresa {
 	private:
 		string nome;
 		string CNPJ;
-		vector <funcionario *> funcionarios;
+		vector<funcionario> funcionarios;
 
 	public:
 			static date data_atual;
@@ -29,7 +29,7 @@ class empresa {
 		//Aumenta o salario de todos os funcionarios
 		void aumentar_salario_todos_funcionarios(float alteracao);
 
-		void add_funcionario(string nome, float salario, string cpf, int dia_de_admissao, int mes_de_admissao, int ano_de_admissao);
+		bool add_funcionario(string nome, float salario, string cpf, int dia_de_admissao, int mes_de_admissao, int ano_de_admissao);
 
 		//Listar todos osfuncionarios
 		void listar_func();
