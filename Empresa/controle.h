@@ -10,9 +10,11 @@ using namespace std;
 
 class controle_empresas{
 	private:
-		vector<empresa> Empresas;
+		vector<empresa*> Empresas;
 
 	public:
+		~controle_empresas();
+
 		void add_Empresa(string nome_empresa, string CNPJ);
 		void listar_empresas();
 		void add_funcionarios(string CNPJ, string nome, float salario, string cpf, int dia_de_admissao, int mes_de_admissao, int ano_de_admissao);

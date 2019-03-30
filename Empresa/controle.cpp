@@ -1,16 +1,16 @@
-#include "controle.h"
+#include "controle.h" 
 
 void controle_empresas::add_Empresa(string nome_empresa, string CNPJ){	
-	empresa Empresa_aux;
-	Empresa_aux.set_nome(nome_empresa);
-	Empresa_aux.set_CNPJ(CNPJ);
+	empresa  *Empresa_aux = new empresa;
+	Empresa_aux->set_nome(nome_empresa);
+	Empresa_aux->set_CNPJ(CNPJ);
 	Empresas.push_back(Empresa_aux);
 };
 
 void controle_empresas::listar_empresas(){
 	int tam = Empresas.size();
 	for (int i = 0; i < tam; i++){
-		cout << "Nome:" <<Empresas[i].get_nome() << endl << "CNPJ: " << Empresas[i].get_CNPJ() << endl;
+		cout << "Nome:" <<Empresas[i]->get_nome() << endl << "CNPJ: " << Empresas[i]->get_CNPJ() << endl;
 	}
 };
 
@@ -19,8 +19,8 @@ void controle_empresas::add_funcionarios(string CNPJ, string nome, float salario
 	bool sucesso;
 	int i;
 	for (i = 0; i < tam; i++){
-		if (CNPJ == Empresas[i].get_CNPJ()){
-			sucesso = Empresas[i].add_funcionario(nome,salario,cpf,dia_de_admissao,mes_de_admissao,ano_de_admissao);
+		if (CNPJ == Empresas[i]->get_CNPJ()){
+			sucesso = Empresas[i]->add_funcionario(nome,salario,cpf,dia_de_admissao,mes_de_admissao,ano_de_admissao);
 			if (sucesso){
 				cout << "Funcionario adicionado com sucesso." << endl;
 				return;
@@ -34,8 +34,8 @@ void controle_empresas::add_funcionarios(string CNPJ, string nome, float salario
 void controle_empresas::listar_funcionarios_empresa(string CNPJ){
 	int tam = Empresas.size();
 	for (int i = 0; i < tam; i++){
-		if (CNPJ == Empresas[i].get_CNPJ()){
-			Empresas[i].listar_func();
+		if (CNPJ == Empresas[i]->get_CNPJ()){
+			Empresas[i]->listar_func();
 		return;
 		}
 	}
@@ -45,8 +45,8 @@ void controle_empresas::listar_funcionarios_empresa(string CNPJ){
 void controle_empresas::listar_funcionarios_em_experiencia(string CNPJ){
 	int tam = Empresas.size();
 	for (int i = 0; i < tam; i++){
-		if (CNPJ == Empresas[i].get_CNPJ()){
-			Empresas[i].listar_func_periodo_exp();
+		if (CNPJ == Empresas[i]->get_CNPJ()){
+			Empresas[i]->listar_func_periodo_exp();
 		return;
 		}
 	}
@@ -56,10 +56,18 @@ void controle_empresas::listar_funcionarios_em_experiencia(string CNPJ){
 void controle_empresas::alterar_salario_funcionario(string CNPJ, float aumento){
 	int tam = Empresas.size();
 	for (int i = 0; i < tam; i++){
-		if (CNPJ == Empresas[i].get_CNPJ()){
-			Empresas[i].aumentar_salario_todos_funcionarios(aumento);
-		return;
+		if (CNPJ == Empresas[i]->get_CNPJ()){
+			Empresas[i]->aumentar_salario_todos_funcionarios(aumento);
+			return;
 		}
 	}
 	cout << "Empresa não existe" << endl;
+};
+
+controle_empresas::~controle_empresas(){
+	int tamanho = Empresas.size();
+	for (int i = 0; tamanho > i; tamanho--){
+		delete Empresas[tamanho - 1];
+		Empresas.pop_back();
+	}
 };

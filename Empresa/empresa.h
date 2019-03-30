@@ -13,7 +13,7 @@ class empresa {
 		// Variável que armazena o CNPJ da empresa
 		string CNPJ;
 		//Vector responsável por armazenar os funcionários de uma mesma empresa.
-		vector<funcionario> funcionarios;
+		vector<funcionario *> funcionarios;
 
 
 	public:

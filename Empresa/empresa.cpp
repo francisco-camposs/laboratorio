@@ -27,7 +27,7 @@ string empresa::get_CNPJ(){
 // Deve ser passado o parametro indicando a porcentagem do aumento.
 void empresa::aumentar_salario_todos_funcionarios(float alteracao = 0){
 	for (unsigned int i = 0; i < funcionarios.size(); i++){
-		funcionarios[i].alterar_salario(alteracao);
+		funcionarios[i]->alterar_salario(alteracao);
 	}
 };
 
@@ -36,16 +36,16 @@ void empresa::aumentar_salario_todos_funcionarios(float alteracao = 0){
 // A função retorna um booleano, verdadeiro após o funcionário ser adicionado caso ele não exista anteriormente e falso caso o contrário.
 bool empresa::add_funcionario(string nome, float salario, string cpf, int dia_de_admissao, int mes_de_admissao, int ano_de_admissao){
 	for (int i = 0; i < (int)funcionarios.size(); i++){
-		if(cpf == funcionarios[i].get_CPF()){
+		if(cpf == funcionarios[i]->get_CPF()){
 			cout << "funcionario já existe, Não é possível adicionar." << endl;
 			return false;		
 		}
 	}
-	funcionario func;         //Variavel auxiliar para o uso do método push_back.
-	func.set_Nome(nome);
-	func.set_Salario(salario);
-	func.set_CPF(cpf);
-	func.set_data_de_admissao(dia_de_admissao, mes_de_admissao, ano_de_admissao);
+	funcionario* func = new funcionario;      //Variavel auxiliar para o uso do método push_back.
+	func->set_Nome(nome);
+	func->set_Salario(salario);
+	func->set_CPF(cpf);
+	func->set_data_de_admissao(dia_de_admissao, mes_de_admissao, ano_de_admissao);
 	funcionarios.push_back(func);
 	return true;
 };
@@ -56,7 +56,7 @@ bool empresa::add_funcionario(string nome, float salario, string cpf, int dia_de
 void empresa::listar_func(){
 	cout << endl << "Todos os Funcionários: " << endl;
 	for (unsigned int i = 0; i < funcionarios.size(); i++){
-		cout << "Nome: " << funcionarios[i].get_Nome() << endl << "Salário: " << funcionarios[i].get_Salario() <<endl;
+		cout << "Nome: " << funcionarios[i]->get_Nome() << endl << "Salário: " << funcionarios[i]->get_Salario() <<endl;
 	}
 };
 
@@ -65,8 +65,8 @@ void empresa::listar_func(){
 void empresa::listar_func_periodo_exp(){
 	cout << endl << "Funcionários em Experiência: " << endl;
 	for (unsigned int i = 0; i < funcionarios.size(); i++){
-		if ((data_atual) - *(funcionarios[i].get_data_de_admissao())<= 90)
-			cout << "Nome: " << funcionarios[i].get_Nome()  << endl << "Salário: " << funcionarios[i].get_Salario() <<endl;
+		if ((data_atual) - *(funcionarios[i]->get_data_de_admissao())<= 90)
+			cout << "Nome: " << funcionarios[i]->get_Nome()  << endl << "Salário: " << funcionarios[i]->get_Salario() <<endl;
 	}
 };
 
@@ -80,7 +80,8 @@ empresa::empresa(){
 empresa::~empresa(){
 	// Variável auxiliar para armazenar a quantidade de funcionários, que é igual ao tamanho do vetor.
 	int tamanho = funcionarios.size();
-	for (int i = 0; i < tamanho; i++){
+	for (int i = 0; tamanho > i; tamanho--){
+		delete funcionarios[tamanho-1];
 		funcionarios.pop_back();
 	}
 }
