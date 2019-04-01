@@ -5,7 +5,7 @@
 #include "date.h"
 #include "funcionario.h"
 
-
+// Variável Que representa a empresa.
 class empresa {
 	private:
 		// Variável que armazena o nome da empresa

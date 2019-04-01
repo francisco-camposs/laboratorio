@@ -1,23 +1,12 @@
 #include <iostream>
-#include "jogador.h"
-#include "dado.h"
+#include "jogo.h"
 
 using namespace std;
 
 int main (){
-
-	dado conjunto(6);
-	jogador cleiton;
-	cleiton.set_Nome("Cleitinho");
-	cout << cleiton;
-	cleiton.Aumentar_Pontuacao(conjunto.rolar());
-	cout << cleiton;
-	cleiton.Aumentar_Pontuacao(conjunto.rolar());
-	cout << cleiton;
-	cleiton.Aumentar_Pontuacao(conjunto.rolar());
-	cout << cleiton;
-	cleiton.Aumentar_Pontuacao(conjunto.rolar());
-	cout << cleiton;
-
+	cout << "Bem_vindos ao jogo dos Dados Aleatórios" << endl;
+	Jogo game;
+	game.iniciar_jogo();
+	game.jogar();
 	return 0;
 }
